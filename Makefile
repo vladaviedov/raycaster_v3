@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-Wall -Wextra -g
-LDFLAGS=
+LDFLAGS=-lglfw -lGL -lGLU
 
 OUT=build/rc3
 SUBDIRS=$(shell cd src && find * -type d)
