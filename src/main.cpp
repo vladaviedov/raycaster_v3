@@ -3,6 +3,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
+#include "util/log.hpp"
+
 #define SCREEN_HEIGHT 1920
 #define SCREEN_WIDTH 1080
 
@@ -28,6 +30,8 @@ int main() {
 	glClearColor(0.3, 0.3, 0.3, 0);
 	gluOrtho2D(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
 
+	rc3::log::debug << "Hello!" << std::endl;
+
 	// Main loop
 	while (!glfwWindowShouldClose(win)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -36,6 +40,7 @@ int main() {
 	}
 
 	// Clean up
+	rc3::log::debug << "Goodbye!" << std::endl;
 	glfwDestroyWindow(win);
 	glfwTerminate();
 
