@@ -15,6 +15,12 @@ namespace rc3 {
 
 		class logstream {
 
+			private:
+				const char *lvl_string() const;
+
+				const loglvl lvl;
+				bool newline = true;
+
 			public:
 				logstream(loglvl log) : lvl(log) {}
 
@@ -34,12 +40,6 @@ namespace rc3 {
 					newline = true;
 					return *this;
 				}
-
-			private:
-				const char *lvl_string() const;
-
-				const loglvl lvl;
-				bool newline = true;
 
 		};
 
