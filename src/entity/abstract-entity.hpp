@@ -21,6 +21,10 @@ namespace rc3 {
 			public:
 				abstract_entity(glm::vec2 spawn);
 
+				inline glm::vec2 get_pos() const {
+					return pos;
+				}
+
 				void apply_force(glm::vec2 force, float delta_time);
 				glm::vec2 calc_update(float delta_time, float friction);
 				void commit_update();
