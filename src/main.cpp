@@ -40,6 +40,7 @@ int main() {
 	rc3::renderer::camera2d view(32);
 
 	rc3::input::keyboard kb;
+	kb.enable(win);
 	auto player = game_world.spawn_player(kb);
 
 	// Main loop
