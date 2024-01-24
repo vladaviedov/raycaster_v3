@@ -35,6 +35,7 @@ int main() {
 	rc3::log::debug << "Hello!" << std::endl;
 
 	rc3::world::world game_world("maps/walls.rcm");
+	glfwSetWindowTitle(win, ("rc3 | " + game_world.map->name()).c_str());
 	rc3::renderer::camera2d view(32);
 
 	// Main loop

@@ -19,11 +19,15 @@ namespace rc3 {
 				level(loader &loader);
 				~level();
 
+				inline std::string name() const {
+					return meta.name;
+				}
+
 				inline glm::vec<2, uint32_t> size() const {
 					return meta.size;
 				}
 
-				inline glm::vec2 get_spawn() const {
+				inline glm::vec2 spawn() const {
 					return meta.spawn_pt;
 				}
 
