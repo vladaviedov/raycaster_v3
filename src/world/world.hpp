@@ -25,6 +25,10 @@ namespace rc3 {
 					entities.push_back(ent);
 				}
 
+				inline const std::vector<std::shared_ptr<entity::abstract_entity>> get_entities() const {
+					return entities;
+				}
+
 				std::shared_ptr<entity::player> spawn_player(input::abstract_input &control);
 		};
 

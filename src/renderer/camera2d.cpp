@@ -35,4 +35,14 @@ void camera2d::render(world::world &world) const {
 			glEnd();
 		}
 	}
+
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glPointSize(scale / 2.0);
+	for (auto &ent : world.get_entities()) {
+		auto pos = ent->get_pos();
+
+		glBegin(GL_POINTS);
+		glVertex2d(pos.x * scale, pos.y * scale);
+		glEnd();
+	}
 }

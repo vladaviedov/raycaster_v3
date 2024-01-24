@@ -9,6 +9,7 @@ namespace rc3 {
 
 			public:
 				virtual glm::vec2 move_vec() = 0;
+				virtual float azimuth_rot() = 0;
 
 		};
 

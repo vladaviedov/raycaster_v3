@@ -6,6 +6,7 @@
 #include "util/log.hpp"
 #include "world/world.hpp"
 #include "renderer/camera2d.hpp"
+#include "input/keyboard.hpp"
 
 #define SCREEN_HEIGHT 1920
 #define SCREEN_WIDTH 1080
@@ -38,11 +39,16 @@ int main() {
 	glfwSetWindowTitle(win, ("rc3 | " + game_world.map->name()).c_str());
 	rc3::renderer::camera2d view(32);
 
+	rc3::input::keyboard kb;
+	auto player = game_world.spawn_player(kb);
+
 	// Main loop
 	while (!glfwWindowShouldClose(win)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		view.render(game_world);
+		player->calc_update(0.1f, 1.0f);
+		player->commit_update();
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

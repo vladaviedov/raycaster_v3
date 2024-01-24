@@ -9,6 +9,7 @@ namespace rc3 {
 			
 			protected:
 				float inertia = 1.0f;
+				float azimuth = 0.0f;
 
 				// Current frame
 				glm::vec2 pos;

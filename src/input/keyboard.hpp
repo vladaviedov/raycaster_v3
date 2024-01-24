@@ -11,6 +11,7 @@ namespace rc3 {
 		
 			public:
 				virtual glm::vec2 move_vec();
+				virtual float azimuth_rot();
 
 		};
 
