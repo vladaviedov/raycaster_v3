@@ -56,15 +56,19 @@ level_meta loader::parse_meta() {
 			meta.size.y = std::stoi(buffer);
 		} else if (buffer == rcm::meta::spawn) {
 			std::getline(splitter, buffer, rcm::separator);
-			meta.size.x = std::stof(buffer);
+			meta.spawn_pt.x = std::stof(buffer);
 
 			std::getline(splitter, buffer, rcm::separator);
-			meta.size.y = std::stof(buffer);
+			meta.spawn_pt.y = std::stof(buffer);
 		} else {
 			// All done
 			break;
 		}
 	}
+
+	log::info << "Loading map '" << meta.name << "'" << std::endl;
+	log::info << "Dimensions: (" << meta.size.x << ", " << meta.size.y << ")" << std::endl;
+	log::info << "Spawn point: (" << meta.spawn_pt.x << ", " << meta.spawn_pt.y << ")" << std::endl;
 
 	return meta;
 }
@@ -120,6 +124,8 @@ cell **loader::load_map(glm::vec<2, uint32_t> dim) {
 			}
 		}
 	}
+
+	log::info << "Load complete!" << std::endl;
 
 	return map;
 }

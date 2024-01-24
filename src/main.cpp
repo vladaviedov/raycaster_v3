@@ -4,6 +4,8 @@
 #include <GL/glu.h>
 
 #include "util/log.hpp"
+#include "world/world.hpp"
+#include "renderer/camera2d.hpp"
 
 #define SCREEN_HEIGHT 1920
 #define SCREEN_WIDTH 1080
@@ -32,9 +34,15 @@ int main() {
 
 	rc3::log::debug << "Hello!" << std::endl;
 
+	rc3::world::world game_world("maps/walls.rcm");
+	rc3::renderer::camera2d view(32);
+
 	// Main loop
 	while (!glfwWindowShouldClose(win)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		view.render(game_world);
+
 		glfwSwapBuffers(win);
 		glfwPollEvents();
 	}

@@ -26,8 +26,8 @@ level::~level() {
 
 cell &level::get_cell(glm::vec<2, uint32_t> coords) const {
 	if (coords.x >= meta.size.x || coords.y >= meta.size.y) {
-		log::error << "Tried accessing cell out range at " << coords << std::endl;
-		log::error << "World dimensions: " << meta.size << std::endl;
+		log::error << "Tried accessing cell out range at (" << coords.x << ", " << coords.y << ")" << std::endl;
+		log::error << "World dimensions: (" << meta.size.x << ", " << meta.size.y << ")" << std::endl;
 		throw std::domain_error("Cell out of range");
 	}
 

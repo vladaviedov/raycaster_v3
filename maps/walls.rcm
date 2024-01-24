@@ -1,0 +1,10 @@
+[meta]
+name,walls
+size,15,15
+spawn,7.5,7.5
+
+[walls]
+hwall,0,0,15
+hwall,0,14,15
+vwall,0,0,15
+vwall,14,0,15

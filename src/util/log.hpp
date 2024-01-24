@@ -27,7 +27,7 @@ namespace rc3 {
 				template<typename T>
 				logstream &operator<<(const T &value) {
 					if (newline) {
-						std::cout << "[" << lvl_string() << "] ";
+						std::cout << lvl_string() << " | ";
 						newline = false;
 					}
 					
