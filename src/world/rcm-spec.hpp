@@ -4,6 +4,8 @@
 
 namespace rc3 {
 	namespace rcm {
+
+		const char separator = ',';
 		
 		namespace meta {
 			const std::string header = "[meta]";
@@ -12,16 +14,11 @@ namespace rc3 {
 			const std::string spawn = "spawn";
 		}
 
+		namespace walls {
+			const std::string header = "[walls]";
+			const std::string hwall = "hwall";
+			const std::string vwall = "vwall";
+		}
+
 	}
 }
-
-// Meta section
-#define META_HDR "[meta]"
-#define META_NAME "name"
-#define META_SIZE "size"
-#define META_SPAWN "spawn"
-
-// Walls section
-#define WALLS_HDR "[walls]"
-#define WALLS_HWALL "hwall"
-#define WALLS_VWALL "vwall"

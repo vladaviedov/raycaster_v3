@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <istream>
 #include <glm/glm.hpp>
 
@@ -19,13 +20,13 @@ namespace rc3 {
 			private:
 				std::istream &source;
 
-				bool find_section(const char *name);
+				bool find_section(const std::string &name);
 
 			public:
 				loader(std::istream &input) : source(input) {}
 
-				level_meta parse_meta() const;
-				cell **load_map(glm::vec<2, uint32_t> dim) const;
+				level_meta parse_meta();
+				cell **load_map(glm::vec<2, uint32_t> dim);
 
 		};
 
