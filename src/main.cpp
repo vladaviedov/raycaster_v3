@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <stdexcept>
 
 #include "util/log.hpp"
 #include "world/world.hpp"
@@ -48,7 +49,31 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		view.render(game_world);
-		player->calc_update(0.1f, 1.0f);
+		
+		glm::vec<2, uint32_t> old_pos = player->get_pos();
+		glm::vec<2, uint32_t> new_pos = player->calc_update(0.1f, 1.0f);
+		
+		try {
+			if (game_world.map->get_cell(new_pos).is_solid()) {
+				if (new_pos.y > old_pos.y) {
+					player->apply_force(glm::vec2(0, -1), 1);
+				}
+				if (new_pos.y < old_pos.y) {
+					player->apply_force(glm::vec2(0, 1), 1);
+				}
+				if (new_pos.x > old_pos.x) {
+					player->apply_force(glm::vec2(-1, 0), 1);
+				}
+				if (new_pos.x < old_pos.x) {
+					player->apply_force(glm::vec2(1, 0), 1);
+				}
+
+				player->calc_update(0.1f, 1.0f);
+			}
+		} catch (std::domain_error &ex) {
+			rc3::log::debug << "Out of bounds!" << std::endl;
+		}
+
 		player->commit_update();
 
 		glfwSwapBuffers(win);
