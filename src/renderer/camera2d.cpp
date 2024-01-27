@@ -36,11 +36,19 @@ void camera2d::render(world::world &world) const {
 		}
 	}
 
-	glColor3f(1.0f, 1.0f, 0.0f);
-	glPointSize(scale / 2.0);
+	glPointSize(scale / 2.0f);
+	glLineWidth(scale / 5.0f);
 	for (auto &ent : world.get_entities()) {
 		auto pos = ent->get_pos();
+		auto az = ent->get_azimuth();
 
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glBegin(GL_LINES);
+		glVertex2d(pos.x * scale, pos.y * scale);
+		glVertex2d((pos.x + 1 * cos(az)) * scale, (pos.y + 1 * sin(az)) * scale);
+		glEnd();
+
+		glColor3f(1.0f, 1.0f, 0.0f);
 		glBegin(GL_POINTS);
 		glVertex2d(pos.x * scale, pos.y * scale);
 		glEnd();

@@ -26,6 +26,10 @@ namespace rc3 {
 					return pos;
 				}
 
+				inline float get_azimuth() const {
+					return azimuth;
+				}
+
 				void apply_force(glm::vec2 force, float delta_time);
 				glm::vec2 calc_update(float delta_time, float friction);
 				void commit_update();

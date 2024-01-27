@@ -19,8 +19,8 @@ glm::vec2 keyboard::move_vec() {
 
 	// Both 0, Front +x, Back -x, Nothing 0
 	int x = (f && b) ? 0 : (f ? 1 : (b ? -1 : 0));
-	// Both 0, Left +y, Back -y, Nothing 0
-	int y = (l && r) ? 0 : l ? 1 : (r ? -1 : 0);
+	// Both 0, Left -y, Back +y, Nothing 0
+	int y = (l && r) ? 0 : r ? 1 : (l ? -1 : 0);
 
 	return glm::vec2(x, y);
 }
