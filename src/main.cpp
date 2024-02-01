@@ -7,6 +7,7 @@
 #include "util/log.hpp"
 #include "world/world.hpp"
 #include "renderer/camera2d.hpp"
+#include "renderer/camera3d.hpp"
 #include "input/keyboard.hpp"
 
 #define SCREEN_HEIGHT 1920
@@ -38,17 +39,20 @@ int main() {
 
 	rc3::world::world game_world("maps/walls.rcm");
 	glfwSetWindowTitle(win, ("rc3 | " + game_world.map->name()).c_str());
-	rc3::renderer::camera2d view(32);
+	rc3::renderer::camera2d view2(32);
+	rc3::renderer::camera3d view(60, 2, 500);
 
 	rc3::input::keyboard kb;
 	kb.enable(win);
 	auto player = game_world.spawn_player(kb);
+	view.bind(player);
 
 	// Main loop
 	while (!glfwWindowShouldClose(win)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		view.render(game_world);
+		view2.render(game_world);
 		
 		glm::vec<2, uint32_t> old_pos = player->get_pos();
 		glm::vec<2, uint32_t> new_pos = player->calc_update(0.1f, 1.0f);

@@ -31,7 +31,7 @@ namespace rc3 {
 					return meta.spawn_pt;
 				}
 
-				cell &get_cell(glm::vec<2, uint32_t> coords) const;
+				const cell &get_cell(glm::vec<2, uint32_t> coords) const;
 
 		};
 

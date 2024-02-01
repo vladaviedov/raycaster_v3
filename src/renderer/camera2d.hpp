@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "camera.hpp"
 #include "../world/world.hpp"
 

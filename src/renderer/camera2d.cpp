@@ -1,5 +1,6 @@
 #include "camera2d.hpp"
 
+#include <cstdint>
 #include <GL/gl.h>
 #include <glm/glm.hpp>
 
