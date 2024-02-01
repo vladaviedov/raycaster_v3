@@ -24,9 +24,20 @@ raycast camera3d::cast(world::world &world, float azimuth) const {
 	raycast h_res = h_cast(world, azimuth);
 	raycast v_res = v_cast(world, azimuth);
 
-	return h_res.distance > v_res.distance
-		? v_res
-		: h_res;
+	// If both successful, pick shortest
+	if (h_res.success && v_res.success) {
+		return h_res.distance > v_res.distance
+			? v_res
+			: h_res;
+	}
+	
+	// Horizontal only
+	if (h_res.success) {
+		return h_res;
+	}
+
+	// Vertical or no hit
+	return v_res;
 }
 
 raycast camera3d::h_cast(world::world &world, float azimuth) const {
@@ -73,7 +84,7 @@ raycast camera3d::h_cast(world::world &world, float azimuth) const {
 		res.distance = distance;
 		res.cell = &world.map->get_cell(glm::vec<2, uint32_t>(ray.x, cell_y));
 	}
-	
+
 	return res;
 }
 
@@ -159,8 +170,6 @@ void camera3d::render(world::world &world) const {
 		if (!result.success) {
 			continue;
 		}
-		log::debug << "Angle: " << cur_az << std::endl;
-		log::debug << "RES: " <<  result.distance << std::endl;
 
 		// Set color
 		if (result.success) {

@@ -14,6 +14,7 @@ namespace rc3 {
 		
 			private:
 				GLFWwindow *window;
+				float sensitivity = 0.1f;
 
 				keybind move_f = { .name = "Move forward", .key = GLFW_KEY_W };
 				keybind move_b = { .name = "Move backward", .key = GLFW_KEY_S };
@@ -33,6 +34,10 @@ namespace rc3 {
 
 				inline void disable() {
 					window = nullptr;
+				}
+
+				inline void set_sensitivity(float new_sens) {
+					sensitivity = new_sens;
 				}
 
 		};

@@ -40,10 +40,11 @@ int main() {
 	rc3::world::world game_world("maps/walls.rcm");
 	glfwSetWindowTitle(win, ("rc3 | " + game_world.map->name()).c_str());
 	rc3::renderer::camera2d view2(32);
-	rc3::renderer::camera3d view(60, 2, 500);
+	rc3::renderer::camera3d view(90, 5, 200);
 
 	rc3::input::keyboard kb;
 	kb.enable(win);
+	kb.set_sensitivity(0.03f);
 	auto player = game_world.spawn_player(kb);
 	view.bind(player);
 

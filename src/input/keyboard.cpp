@@ -34,5 +34,5 @@ float keyboard::azimuth_rot() {
 		return 0;
 	}
 
-	return l ? -0.1 : 0.1;
+	return l ? -sensitivity : sensitivity;
 }
